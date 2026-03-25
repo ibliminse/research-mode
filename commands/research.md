@@ -1,6 +1,8 @@
 # Research Mode
 
-Activates 4 anti-hallucination constraints for deep research work. Based on [Anthropic's official documentation](https://docs.anthropic.com/en/docs/test-and-evaluate/strengthen-guardrails/reduce-hallucinations) — specifically the advanced techniques most people skip.
+Activates anti-hallucination constraints for deep research work. Based on [Anthropic's official documentation](https://docs.anthropic.com/en/docs/test-and-evaluate/strengthen-guardrails/reduce-hallucinations).
+
+**Check arguments for `--docs` flag.** If `$ARGUMENTS` contains `--docs`, activate ALL 4 constraints (including Constraint 4: External Knowledge Restriction). If `--docs` is NOT present, activate only Constraints 1-3. Strip `--docs` from arguments before using the remaining text as the research topic.
 
 Stay in this mode until the user says "exit research mode" or switches to a creative/brainstorming task.
 
@@ -52,11 +54,12 @@ Why this matters: Faulty logic and bad assumptions are invisible when Claude jum
 
 ---
 
-## Constraint 4: External Knowledge Restriction
+## Constraint 4: External Knowledge Restriction (only with --docs)
 
-When documents are provided, ONLY use information from those documents.
+**This constraint is ONLY active when the user passes `--docs`.** If `--docs` was not in the arguments, SKIP this constraint entirely — Claude may freely use general knowledge alongside provided documents.
 
-The rules:
+When active:
+- ONLY use information from provided documents
 - Do not supplement with training data or general knowledge
 - If the documents don't contain the answer, say: "The provided documents don't address this"
 - If asked to go beyond the documents, explicitly flag: "This next part draws on general knowledge, not the provided sources"
@@ -95,4 +98,9 @@ Say "exit research mode", "creative mode", or switch to any brainstorming/creati
 
 ## Arguments
 
-$ARGUMENTS — optional topic to research. If provided, begin researching immediately using web search, file search, and all available tools. Apply all 4 constraints from the start.
+$ARGUMENTS
+
+Flags:
+- `--docs` — activates external knowledge restriction (Constraint 4). Without this flag, only Constraints 1-3 are active.
+
+Everything else in the arguments is treated as the research topic. If a topic is provided, begin researching immediately using web search, file search, and all available tools.

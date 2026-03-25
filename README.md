@@ -27,7 +27,7 @@ Type `/research` and Claude stops guessing.
 | **Verify with citations** | Every claim needs a source. No source = `[retracted]` | Removes confident-sounding fiction |
 | **Direct quotes for factual grounding** | Extracts exact quotes before analyzing | Kills paraphrase-drift |
 | **Chain-of-thought verification** | Step-by-step logic before conclusions | Surfaces bad assumptions |
-| **External knowledge restriction** | Only uses info from provided documents | No training data mixed in |
+| **External knowledge restriction** | Only uses info from provided documents | `--docs` flag only |
 
 Type `exit research mode` to go back to normal.
 
@@ -51,13 +51,31 @@ git clone https://github.com/ibliminse/research-mode.git ~/.claude/skills/resear
 /research
 ```
 
+This activates 3 constraints: citations, direct quotes, and chain-of-thought. Claude can still use its general knowledge — it just has to be rigorous about it.
+
 With a topic:
 
 ```
 /research what caused the Change Healthcare breach
 ```
 
-Claude enters research mode immediately — all 4 constraints active. Every claim gets a source or gets cut. Reasoning is shown step by step. No training data mixed with your documents.
+### `--docs` flag
+
+When you're analyzing specific documents and need to know exactly what came from your source vs. Claude's training data:
+
+```
+/research --docs
+```
+
+This adds a 4th constraint: **external knowledge restriction**. Claude will ONLY use information from documents you provide. No general knowledge mixed in.
+
+```
+/research --docs review this contract for liability issues
+```
+
+**When to use `--docs`:** Legal review, financial analysis, compliance audits — any time you need to trust that every insight came from YOUR documents, not Claude's training data.
+
+**When to skip `--docs`:** General research, fact-checking, exploration — you want Claude's knowledge, just with citations and reasoning.
 
 ## Why not all 7 all the time?
 
