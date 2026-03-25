@@ -1,0 +1,5 @@
+{
+  "name": "research-mode",
+  "description": "Full anti-hallucination research mode for Claude Code. Enforces citation requirements, direct quote grounding, chain-of-thought verification, and external knowledge restriction. Based on Anthropic's official documentation — expanded from 3 to 4 advanced constraints.",
+  "version": "1.0.0"
+}
