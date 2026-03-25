@@ -24,10 +24,10 @@ Type `/research` and Claude stops guessing.
 
 | Constraint | What happens | Why it matters |
 |-----------|-------------|----------------|
-| **Cite or retract** | Every claim needs a source. No source = `[retracted]` | Removes confident-sounding fiction |
-| **Quote first** | Extracts exact quotes before analyzing | Kills paraphrase-drift |
-| **Show reasoning** | Step-by-step logic before conclusions | Surfaces bad assumptions |
-| **Docs only** | Only uses info from provided documents | No training data mixed in |
+| **Verify with citations** | Every claim needs a source. No source = `[retracted]` | Removes confident-sounding fiction |
+| **Direct quotes for factual grounding** | Extracts exact quotes before analyzing | Kills paraphrase-drift |
+| **Chain-of-thought verification** | Step-by-step logic before conclusions | Surfaces bad assumptions |
+| **External knowledge restriction** | Only uses info from provided documents | No training data mixed in |
 
 Type `exit research mode` to go back to normal.
 
