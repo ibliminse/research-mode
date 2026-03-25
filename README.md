@@ -22,12 +22,12 @@
 
 Type `/research` and Claude stops guessing.
 
-| # | Constraint | What happens | Why it matters |
-|---|-----------|-------------|----------------|
-| 4 | **Cite or retract** | Every claim needs a source. No source = `[retracted]` | Removes confident-sounding fiction |
-| 5 | **Quote first** | Extracts exact quotes before analyzing | Kills paraphrase-drift |
-| 6 | **Show reasoning** | Step-by-step logic before conclusions | Surfaces bad assumptions |
-| 7 | **Docs only** | Only uses info from provided documents | No training data mixed in |
+| Constraint | What happens | Why it matters |
+|-----------|-------------|----------------|
+| **Cite or retract** | Every claim needs a source. No source = `[retracted]` | Removes confident-sounding fiction |
+| **Quote first** | Extracts exact quotes before analyzing | Kills paraphrase-drift |
+| **Show reasoning** | Step-by-step logic before conclusions | Surfaces bad assumptions |
+| **Docs only** | Only uses info from provided documents | No training data mixed in |
 
 Type `exit research mode` to go back to normal.
 
@@ -36,13 +36,13 @@ Type `exit research mode` to go back to normal.
 **Plugin (recommended):**
 
 ```
-claude plugin add dogwiz/research-mode
+claude plugin add ibliminse/research-mode
 ```
 
 **Manual:**
 
 ```bash
-git clone https://github.com/dogwiz/research-mode.git ~/.claude/skills/research-mode
+git clone https://github.com/ibliminse/research-mode.git ~/.claude/skills/research-mode
 ```
 
 ## Usage
@@ -61,7 +61,7 @@ Claude enters research mode immediately — all 4 constraints active. Every clai
 
 ## Why not all 7 all the time?
 
-Anthropic published [7 anti-hallucination techniques](https://docs.anthropic.com/en/docs/test-and-evaluate/strengthen-guardrails/reduce-hallucinations). We split them:
+Anthropic published [7 anti-hallucination techniques](https://docs.anthropic.com/en/docs/test-and-evaluate/strengthen-guardrails/reduce-hallucinations). I split them:
 
 **3 should be always on** (no downside):
 
